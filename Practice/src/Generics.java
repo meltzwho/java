@@ -7,7 +7,7 @@ public class Generics {
 		strings.push("teststr");
 		System.out.println(strings.size());
 		ints.push(123);
-		ints.push(321);
+		ints.push(323);
 		System.out.println(ints.pop(1));
 		System.out.println(ints.size());
 	}
