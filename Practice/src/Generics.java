@@ -12,7 +12,7 @@ public class Generics {
 		doubles.push(6.6);
 		print(doubles,0);
 		print(ints, 4);
-		//incompatible type
+		//incompatible type string
 		//myList<String> strings=new myList<>();
 	}
 	public static void print(myList<?> list, int index){
