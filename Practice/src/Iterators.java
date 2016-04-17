@@ -2,24 +2,23 @@ import java.util.*;
 public class Iterators {
 
 	public static void main(String[] args) {
-		Collection<String> strings=new myArrayList<>();
+		myLinkedList<String> strings=new myLinkedList<>();
 		strings.add("Paul");
-		strings.add("Blart");
-		Iterator<String> itr=strings.iterator();
+		strings.add("Blart");	
+		Iterator<String> itr=strings.descendingIterator();
 		System.out.println("strings before iteration: "+strings);
 		while(itr.hasNext()){
 			System.out.println("strings.size: "+strings.size());
 			System.out.println("current iteration: "+itr.next());
-			itr.remove();	
 		}
 		System.out.println("strings after iteration: "+strings);
 	}
 }
-class myArrayList<T> extends ArrayList<T>{
+class myLinkedList<T> extends LinkedList<T>{
 	public String toString(){
 		String s="";
-		for(int i=0;i<super.size();i++){
-			s+=super.get(i)+" ";
+		for(T element: this){
+			s+=element+" ";
 		}
 		return s;
 		}
