@@ -5,11 +5,11 @@ public class Iterators {
 		myLinkedList<String> strings=new myLinkedList<>();
 		strings.add("Paul");
 		strings.add("Blart");	
-		Iterator<String> itr=strings.descendingIterator();
+		ListIterator<String> itr=strings.listIterator(strings.size());
 		System.out.println("strings before iteration: "+strings);
-		while(itr.hasNext()){
+		while(itr.hasPrevious()){
 			System.out.println("strings.size: "+strings.size());
-			System.out.println("current iteration: "+itr.next());
+			System.out.println("current iteration: "+itr.previous());
 		}
 		System.out.println("strings after iteration: "+strings);
 	}
