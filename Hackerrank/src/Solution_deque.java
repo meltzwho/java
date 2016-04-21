@@ -24,3 +24,4 @@ public class Solution_deque {
         System.out.print(largest);
     }
 }
+//passes all test cases in under 1sec
