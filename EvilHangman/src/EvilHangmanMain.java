@@ -12,13 +12,13 @@ public class EvilHangmanMain {
 	// get the length of word the player wants
         int wordLength = getWordLength(wordLengths);
 	// get the number of guesses the player wants
-        int guesses = getGuesses();
+        int guesses = getGuesses(wordLength);
 	// ask the player if they want to know the words that
 	// the system is still considering
 	boolean knowsWordsLeft = getKnowWordsLeft(wordLength);
         // get all words from the dictionary of the correct length
 	ArrayList<String> wordList = getWordList(wordLength);
-        // Constuct an instance of the game that gives the player
+        // Construct an instance of the game that gives the player
 	// a word of length "wordLength" to guess in "guesses" guesses,
 	// with information about how many words the system is still
 	// considering  if "knowsWordsLeft" is true. "wordList"
@@ -62,12 +62,12 @@ public class EvilHangmanMain {
     // Returns: the number of guesses the play wants
     // Postcondition: Prompts the player for the number of guesses he/she
     //                wants until a positive value has been entered
-    public static int getGuesses() {
+    public static int getGuesses(int wordLength) {
 	System.out.print("Enter the number of guesses you want to make: " );
 	Scanner sc = new Scanner(System.in);	
 	int guesses = sc.nextInt();
-	while (guesses <= 0||guesses >= 27) {
-	    System.out.println("Guesses must be positive or less than 27.");
+	while (guesses < wordLength||guesses >= 27) {
+	    System.out.println("Guesses must be greater or equal to word length and less than 27.");
             System.out.print("Enter the number of guesses you want to make: " );
 	    guesses = sc.nextInt();
 	}
