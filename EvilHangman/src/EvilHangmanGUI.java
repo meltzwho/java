@@ -47,7 +47,6 @@ public class EvilHangmanGUI extends Application{
 		play.setOnAction(e->{
 			if(!inProgress)
 			buildGame(root);
-			inProgress=true;
 		});
 		
 		reset.setOnAction(e->{
@@ -62,10 +61,15 @@ public class EvilHangmanGUI extends Application{
 		});
 		
 		guess.setOnAction(e->{
-			if(inProgress)
+			if(inProgress){
 				if(eh.guesses>0)
 					outer:do{
-						char ch = guessIn.getText().charAt(0); 
+						char ch = guessIn.getText().charAt(0);
+						ch=Character.toLowerCase(ch);
+						if(!Character.isLetter(ch)){
+							root.setTop(new Label("error: guess isn't a letter"));
+							break outer;
+						}
 						for(char c: eh.used.toCharArray()){
 							if(c==ch){
 								root.setTop(new Label("error: letter already guessed"));
@@ -76,13 +80,17 @@ public class EvilHangmanGUI extends Application{
 						eh.guesses=eh.guesses-1;
 						guesses.setText(""+eh.guesses);
 						eh.play(ch);
-						root.setBottom(usedArea);
+						root.setTop(null);
 						usedArea.getChildren().clear();
+						root.setBottom(usedArea);
 						usedArea.getChildren().add(new Label("Letters used: "+eh.used));
 						usedArea.getChildren().add(new Label("Letters correct: "+eh.status));
 						if(eh.knowsWordsLeft)
 							usedArea.getChildren().add(new Label("Possible words left: " + eh.tempList.size()));
 					}while(false);
+			}
+			else
+				root.setTop(new Label("error: must create game first"));
 		});
 		
 		Scene sc=new Scene(root,700,500);
@@ -107,6 +115,7 @@ public class EvilHangmanGUI extends Application{
 			else if(!wordList.isEmpty()){
 				root.setTop(new Label("game build successful"));
 				eh = new EvilHangmanGUI_Logic(Integer.parseInt(wordLength.getText()), Integer.parseInt(guesses.getText()),knowsWordsLeft.isSelected(), wordList);
+				inProgress=true;
 			}
 		}
 		catch(FileNotFoundException ex){
