@@ -84,7 +84,7 @@ public class EvilHangmanGUI extends Application{
 						usedArea.getChildren().clear();
 						root.setBottom(usedArea);
 						usedArea.getChildren().add(new Label("Letters used: "+eh.used));
-						usedArea.getChildren().add(new Label("Letters correct: "+eh.status));
+						root.setCenter(new Label("Letters correct: "+eh.status));
 						if(eh.knowsWordsLeft)
 							usedArea.getChildren().add(new Label("Possible words left: " + eh.tempList.size()));
 					}while(false);
