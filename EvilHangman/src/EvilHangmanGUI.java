@@ -27,11 +27,11 @@ public class EvilHangmanGUI extends Application{
 		
 		BorderPane root=new BorderPane();
 		
-		gameControlLabel.setTextFill(Color.RED);
+		gameControlLabel.setTextFill(Color.GREEN);
 		VBox gameControls=new VBox(1, gameControlLabel,knowsWordsLeft,wordLength,guesses,play,reset);
 		gameControls.setAlignment(Pos.CENTER);
 		
-		guessControlLabel.setTextFill(Color.RED);
+		guessControlLabel.setTextFill(Color.GREEN);
 		VBox guessControls=new VBox(1, guessControlLabel,guessIn,guess);
 		guessControls.setAlignment(Pos.CENTER);
 		
@@ -43,6 +43,7 @@ public class EvilHangmanGUI extends Application{
 		root.setRight(allControls);
 		root.setBottom(usedArea);
 		root.setPadding(new Insets(10,10,10,10));
+		root.setBackground(new Background(new BackgroundFill(Color.GAINSBORO,null,null)));
 		
 		play.setOnAction(e->{
 			if(!inProgress)
