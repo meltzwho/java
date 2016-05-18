@@ -62,7 +62,10 @@ public class CombinationLock {
 		    for (int j=18-(2*i); j>1;j--){
 				System.out.print(" ");
 		    }
-		    System.out.println(lock.get(++head));
+		    if(turn)
+		    	System.out.println(lock.get(head++));
+		    else
+		    	System.out.println(lock.get(++head));
 			}
 		System.out.println("            "+nums.get(head));
 }
