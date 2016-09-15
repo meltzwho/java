@@ -99,4 +99,54 @@ public class LinkedStringLog implements StringLogInterface
       
     return logString;
   }
+  //Eric Meltzer
+  //my methods
+  public boolean isEmpty(){
+	  if(log==null)
+		  return true;
+	  else
+		  return false;
+  }
+  
+  public int howMany(String element){
+	  LLStringNode node;
+	  int count=0;
+	  node=log;
+	  while(node!=null)
+	  {
+		  if(element.equalsIgnoreCase(node.getInfo()))
+		  {
+			  count++;
+		  }
+		  node=node.getLink();
+	  }
+	  return count;
+  }
+  
+  public boolean uniqInsert(String element){
+	  if(this.contains(element)){
+		  return false;
+	  }
+	  else
+	  {
+		  this.insert(element);
+		  return true;
+	  }
+  }
+
+  //Precondition:   This StringLog is not empty.
+  public String smallest(){
+	  String smallest;
+	  LLStringNode node;
+	  node=log;
+	  smallest=log.getInfo();
+	  while(node!=null){
+		  if(node.getInfo().compareToIgnoreCase(smallest)<=0){
+			  smallest=node.getInfo();
+		  }
+		  node=node.getLink();
+	  }
+	  return smallest;
+  }
+  
 }
