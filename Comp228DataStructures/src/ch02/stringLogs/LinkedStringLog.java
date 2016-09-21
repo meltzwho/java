@@ -99,7 +99,7 @@ public class LinkedStringLog implements StringLogInterface
       
     return logString;
   }
-  //Eric Meltzer
+  //Eric Meltzer GitGit
   //my methods
   public boolean isEmpty(){
 	  if(log==null)
