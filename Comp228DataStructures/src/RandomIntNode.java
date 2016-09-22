@@ -42,7 +42,44 @@ public class RandomIntNode {
 }
 
 class LinkedListPractice{
+	
 	public static void main(String args[]){
+		RandomIntNode head=new RandomIntNode();
+		RandomIntNode current=null;
+		RandomIntNode prev=null;
 		
+		current=head;
+		for(int i=0;i<9;i++){
+			prev=current;
+			current=new RandomIntNode();
+			prev.setNext(current);
+		}
+		current=head;
+		while(current!=null){
+			System.out.println(current.getValue());
+			current=current.getNext();
+		}
+		current=head;
+		prev=null;
+		while(current!=null){
+			if(current.getValue()%2==0){
+				if(prev==null){
+					head=current.getNext();
+				}
+				else{
+					prev.setNext(current.getNext());
+				}
+			}
+			else{
+				prev=current;
+			}
+			current=current.getNext();
+		}
+		current=head;
+		System.out.println("Evens removed:");
+		while(current!=null){
+			System.out.println(current.getValue());
+			current=current.getNext();
+		}
 	}
 }
