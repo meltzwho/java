@@ -1,10 +1,10 @@
+package ch02.stringLogs;
 //Modified by: Eric Meltzer
 //----------------------------------------------------------------------------
 // UseStringLog.java           by Dale/Joyce/Weems                   Chapter 2
 //
 // Simple example of the use of a StringLog.
 //----------------------------------------------------------------------------
-import ch02.stringLogs.*;
 
 public class UseStringLog
 {
