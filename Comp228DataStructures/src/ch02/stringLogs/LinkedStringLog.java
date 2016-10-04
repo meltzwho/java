@@ -101,6 +101,10 @@ public class LinkedStringLog implements StringLogInterface
   }
   //Eric Meltzer GitGit
   //my methods
+  
+  //checks 'log' to see if null indicating no element insertion
+  //return true if empty, else false
+  //Postcondition - boolean returned
   public boolean isEmpty(){
 	  if(log==null)
 		  return true;
@@ -108,6 +112,10 @@ public class LinkedStringLog implements StringLogInterface
 		  return false;
   }
   
+  //traverses StringLog and increment count when 'element' is found
+  //String element - string to be found
+  //return an int count
+  //Postcondition - int returned
   public int howMany(String element){
 	  LLStringNode node;
 	  int count=0;
@@ -123,6 +131,11 @@ public class LinkedStringLog implements StringLogInterface
 	  return count;
   }
   
+  //check if 'element' is in StringLog and if not insert it
+  //String element - string to be inserted
+  //return a boolean representing successful (or not) insertion
+  //invokes contains(String element) and insert(String element) methods
+  //Postcondition - boolean returned
   public boolean uniqInsert(String element){
 	  if(this.contains(element)){
 		  return false;
@@ -133,15 +146,19 @@ public class LinkedStringLog implements StringLogInterface
 		  return true;
 	  }
   }
-
-  //Precondition:   This StringLog is not empty.
+  
+  //set 'smallest' to top LLStringNode's 'info' then traverse StringLog
+  //reassign 'smallest' if current node's 'info' is smaller lexicographically
+  //return String representing smallest
+  //Precondition: this StringLog is not empty.
+  //Postcondition: String returned
   public String smallest(){
 	  String smallest;
 	  LLStringNode node;
 	  node=log;
 	  smallest=log.getInfo();
 	  while(node!=null){
-		  if(node.getInfo().compareToIgnoreCase(smallest)<=0){
+		  if(node.getInfo().compareToIgnoreCase(smallest)<0){
 			  smallest=node.getInfo();
 		  }
 		  node=node.getLink();
