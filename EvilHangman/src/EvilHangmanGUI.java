@@ -146,4 +146,7 @@ public class EvilHangmanGUI extends Application{
 		}
 		return result;
 	}
+	public static void main(String args[]){
+		launch(args);
+	}
 }

@@ -7,9 +7,9 @@
 
 package ch02.stringLogs;
 
-public class LinkedStringLog implements StringLogInterface 
+public class LinkedStringLog<T> implements StringLogInterface<T> 
 {
-  protected LLStringNode log; // reference to first node of linked 
+  protected LLStringNode<T> log; // reference to first node of linked 
                               // list that holds the StringLog strings
   protected String name;      // name of this StringLog
   
@@ -21,12 +21,12 @@ public class LinkedStringLog implements StringLogInterface
     this.name = name;
   }
 
-  public void insert(String element)
+  public void insert(T element)
   // Precondition:   This StringLog is not full.
   //
   // Places element into this StringLog.
   {      
-    LLStringNode newNode = new LLStringNode(element);
+    LLStringNode<T> newNode = new LLStringNode<T>(element);
     newNode.setLink(log);
     log = newNode;
   }
@@ -41,7 +41,7 @@ public class LinkedStringLog implements StringLogInterface
   // Returns the number of Strings in this StringLog.
   {
     int count = 0;
-    LLStringNode node;
+    LLStringNode<T> node;
     node = log;
     while (node != null)
     {
@@ -51,17 +51,17 @@ public class LinkedStringLog implements StringLogInterface
     return count;
   }
   
-  public boolean contains(String element)
+  public boolean contains(T element)
   // Returns true if element is in this StringLog,
   // otherwise returns false.
   // Ignores case difference when doing string comparison.
   {                 
-    LLStringNode node;
+    LLStringNode<T> node;
     node = log;
 
     while (node != null) 
     {
-      if (element.equalsIgnoreCase(node.getInfo()))  // if they match
+      if (element.equals(node.getInfo()))  // if they match
         return true;
       else
         node = node.getLink();
@@ -86,7 +86,7 @@ public class LinkedStringLog implements StringLogInterface
   // Returns a nicely formatted string representing this StringLog.
   {
     String logString = "Log: " + name + "\n\n";
-    LLStringNode node;
+    LLStringNode<T> node;
     node = log;
     int count = 0;
     
@@ -117,12 +117,12 @@ public class LinkedStringLog implements StringLogInterface
   //return an int count
   //Postcondition - int returned
   public int howMany(String element){
-	  LLStringNode node;
+	  LLStringNode<T> node;
 	  int count=0;
 	  node=log;
 	  while(node!=null)
 	  {
-		  if(element.equalsIgnoreCase(node.getInfo()))
+		  if(element.equals(node.getInfo()))
 		  {
 			  count++;
 		  }
@@ -136,7 +136,7 @@ public class LinkedStringLog implements StringLogInterface
   //return a boolean representing successful (or not) insertion
   //invokes contains(String element) and insert(String element) methods
   //Postcondition - boolean returned
-  public boolean uniqInsert(String element){
+  public boolean uniqInsert(T element){
 	  if(this.contains(element)){
 		  return false;
 	  }
@@ -152,6 +152,7 @@ public class LinkedStringLog implements StringLogInterface
   //return String representing smallest
   //Precondition: this StringLog is not empty.
   //Postcondition: String returned
+  /*
   public String smallest(){
 	  String smallest;
 	  LLStringNode node;
@@ -165,5 +166,5 @@ public class LinkedStringLog implements StringLogInterface
 	  }
 	  return smallest;
   }
-  
+  */
 }

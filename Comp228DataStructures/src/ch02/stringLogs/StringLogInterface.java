@@ -9,9 +9,9 @@
 
 package ch02.stringLogs;
 
-public interface StringLogInterface
+public interface StringLogInterface<T>
 {
-  void insert(String element);
+  void insert(T element);
   // Precondition:   This StringLog is not full.
   // 
   // Places element into this StringLog.
@@ -22,7 +22,7 @@ public interface StringLogInterface
   int size();
   // Returns the number of Strings in this StringLog.
 
-  boolean contains(String element);
+  boolean contains(T element);
   // Returns true if element is in this StringLog,
   // otherwise returns false.
   // Ignores case differences when doing string comparison.

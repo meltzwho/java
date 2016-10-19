@@ -6,36 +6,36 @@
 
 package ch02.stringLogs;
 
-public class LLStringNode 
+public class LLStringNode<T> 
 {
-  private String info;
-  private LLStringNode link;
+  private T info;
+  private LLStringNode<T> link;
   
-  public LLStringNode(String info)
+  public LLStringNode(T info)
   {
     this.info = info;
     link = null;
   }
  
-  public void setInfo(String info)
+  public void setInfo(T info)
   // Sets info string of this LLStringNode.
   {
     this.info = info;
   }
 
-  public String getInfo()
+  public T getInfo()
   // Returns info string of this LLStringNode.
   {
     return info;
   }
  
-  public void setLink(LLStringNode link)
+  public void setLink(LLStringNode<T> link)
   // Sets link of this LLStringNode.
   {
     this.link = link;
   }
 
-  public LLStringNode getLink()
+  public LLStringNode<T> getLink()
   // Returns link of this LLStringNode.
   {
     return link;
