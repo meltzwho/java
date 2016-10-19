@@ -10,7 +10,7 @@ public class UseStringLog
 {
   public static void main(String[] args)
   { 
-	  LinkedStringLog intLog=new LinkedStringLog<Integer>("intLog");
+	  LinkedStringLog<Integer> intLog=new LinkedStringLog<Integer>("intLog");
 	  intLog.insert(3);
 	  intLog.insert(2);
 	  intLog.insert(1);
