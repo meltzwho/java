@@ -64,6 +64,12 @@ public class PostFixEvaluator
         else
         if(operator.equals("-"))
           result = operand1 - operand2;
+        if(operator.equals("^")){
+            result=operand1;
+        	for(int i=1;i<operand2;i++){    	
+            		result=result*operand1;
+            };
+        }
         else
           throw new PostFixException("Illegal symbol: " + operator);
 
