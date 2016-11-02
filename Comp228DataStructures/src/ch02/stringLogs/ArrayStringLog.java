@@ -6,7 +6,7 @@
 
 package ch02.stringLogs;
 
-public class ArrayStringLog implements StringLogInterface 
+public class ArrayStringLog //implements StringLogInterface 
 {
   protected String name;              // name of this StringLog
   protected String[] log;             // array that holds strings
