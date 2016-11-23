@@ -58,6 +58,8 @@ public class SimulationApp
       }
       else if(assignmentChoice.equalsIgnoreCase("finishTime")){
     	  sim.assignment=false;
+    	  System.out.print("(DEBUG) Check if queue with shortest finish time is selected (type y/n): ");
+    	  if("y".equals(conIn.nextLine())) sim.debug=true;
       }
       else{
     	  System.out.println("Invalid choice");
@@ -79,7 +81,7 @@ public class SimulationApp
       
       // Determine if there is another simulation instance to process
       System.out.println();
-      System.out.print("Evaluate another simulation instance? (Y=Yes): ");
+      System.out.print("Evaluate another simulation instance? (type y/n): ");
       more = conIn.nextLine();
       System.out.println();
     }

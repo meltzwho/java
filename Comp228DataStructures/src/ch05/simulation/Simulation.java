@@ -14,7 +14,7 @@ public class Simulation
   //**NEW CODE**
   public int longest=-1,longestSize=-1;
   public int shortestFinishTime=Integer.MAX_VALUE,shortestFinishTimeQ=-1;
-  public boolean assignment;
+  public boolean assignment,debug;
   //	
   
   final int MAXTIME = Integer.MAX_VALUE; 
@@ -117,13 +117,17 @@ public class Simulation
         // determine queue with shortest finish time
         shortestFinishTime=Integer.MAX_VALUE;
         for(int i=0;i<numQueues;i++){
-        	if(queues[i].size()==0){
+        	if(queues[i].isEmpty()){
         		shortestFinishTimeQ=i;
+        		if(!assignment&&debug)
+        			System.out.println("Queue: "+(i+1)+" is empty");
         		break;
         	}
         	else{
         		rearCust = queues[i].peekRear();
         		finishTime = rearCust.getFinishTime() + nextCust.getServiceTime();
+        		if(!assignment&&debug)
+        			System.out.println("Queue: "+(i+1)+" FinishTime: "+finishTime);
         		if(finishTime<shortestFinishTime){
         			shortestFinishTimeQ=i;
         			shortestFinishTime=finishTime;
@@ -142,7 +146,7 @@ public class Simulation
         	}
         }
         else{
-        	if(queues[shortestFinishTimeQ].size()==0){
+        	if(queues[shortestFinishTimeQ].isEmpty()){
         		finishTime = nextCust.getArrivalTime() + nextCust.getServiceTime();
         	}
         	else{
@@ -159,6 +163,8 @@ public class Simulation
         }
         else{
           queues[shortestFinishTimeQ].enqueue(nextCust);
+          if(debug)
+        	  System.out.println("Queue selected: "+(shortestFinishTimeQ+1));
         }
         
         custInCount = custInCount + 1;
